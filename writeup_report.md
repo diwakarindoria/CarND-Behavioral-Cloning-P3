@@ -29,7 +29,7 @@ Normal Center Camera Image:
 
 [![Normal Center Camera Image](./examples/center_sample.jpg)](./examples/center_sample.jpg)
 
-[![Normal Center Camera Image](./examples/center_cropped.jpg)](./examples/center_center_cropped.jpg)
+[![Normal Center Camera Image](./examples/center_cropped-2.jpg)](./examples/center_center_cropped-2.jpg)
 
 <!-- [image6]: ./examples/center_flipped.jpg "Flipped Center Camera Image" -->
 
