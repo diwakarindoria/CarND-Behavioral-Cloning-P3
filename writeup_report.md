@@ -17,8 +17,13 @@ I used the sample driving data from given link as (https://d17h27t6h515a5.cloudf
 
 [//]: # (Image References)
 
+Normal Left Camera Image:
 [![Normal Left Camera Image](./examples/left_sample.jpg)](./examples/left_sample.jpg)
+
+Normal Right Camera Image:
 [![Normal Right Camera Image](./examples/right_sample.jpg)](./examples/right_sample.jpg)
+
+Normal Center Camera Image:
 [![Normal Center Camera Image](./examples/center_sample.jpg)](./examples/center_sample.jpg)
 
 <!-- [image6]: ./examples/center_flipped.jpg "Flipped Center Camera Image" -->
@@ -124,22 +129,25 @@ Final model architecture:
 
 I used udacity provided data to train model about good driving behavior. Here is an example image of center lane driving:
 
-![center camera image][image2]
+[![Normal Center Camera Image](./examples/center_sample.jpg)](./examples/center_sample.jpg)
 
 The right camera sample image:
 
-![alt text][image3]
+[![Normal Right Camera Image](./examples/right_sample.jpg)](./examples/right_sample.jpg)
 
 The left camera sample image:
 
-![alt text][image4]
+[![Normal Left Camera Image](./examples/left_sample.jpg)](./examples/left_sample.jpg)
 
 
 To augment the data set, I also flipped images and angles thinking that this would add more examples to train the model well as more data is better to train model better. For example, here is an image that has then been flipped:
 
-![center flipped][image6]
-![left flipped][image7]
-![right flipped][image7]
+Center Flipped Image:
+[![Center Flipped Image](./examples/center_flipped.jpg)](./examples/center_flipped.jpg)
+Left Flipped Image:
+[![Left Flipped Image](./examples/left_flipped.jpg)](./examples/left_flipped.jpg)
+Right Flipped Image:
+[![Right Flipped Image](./examples/right_flipped.jpg)](./examples/right_flipped.jpg)
 
 After the collection process, I had 3 times more number of data points. I then preprocessed incoming data by normalize and cropping the image, centered around zero with small standard deviation (x/127.5 - 1.0) and crop image to only see section with road. Images was cropped 50px from top and 20px from bottom. All the preprocessing was done in the start model itself.
 
