@@ -72,13 +72,12 @@ def generator(samples, batch_size=32):
                 # Flip the right image
                 images.append(np.fliplr(right_image))
                 angles.append(right_angle * -1)
-
-            # trim image to only see section with road
+            
             X_train = np.array(images)
             y_train = np.array(angles)
             yield sklearn.utils.shuffle(X_train, y_train)
 
-# compile and train the model using the generator function
+# geting the batch data using the generator function
 train_generator = generator(train_samples, batch_size=128)
 validation_generator = generator(validation_samples, batch_size=128)
 
@@ -93,8 +92,8 @@ model = Sequential()
 model.add(Lambda(lambda x: x/127.5 - 1.0,
         input_shape=(row, col, ch) ))
 # Crop the images and ignore the unnecessary data eg. sky at the upper and car body near by camera
-model.add(Cropping2D(cropping=((50,20), (0,0)) ))
-# Applying Covolutional layer with 24 channels
+model.add(Cropping2D(cropping=((50,20), (0,0)) )) # trim image to only see section with road
+# Covolutional layer with 24 channels, 5 X 5 kernel, strides 2 X 2
 model.add(Conv2D(24, (5, 5), strides=(2,2), padding='valid'))
 model.add(Activation('elu'))
 model.add(Conv2D(36, (5, 5), strides=(2,2), padding='valid'))
@@ -113,13 +112,8 @@ model.add(Activation('elu'))
 model.add(Dense(10, kernel_regularizer=regularizers.l2(0.0001)))
 model.add(Activation('elu'))
 model.add(Dense(1))
-
+# compile and train the model using the generator
 model.compile(loss='mse', optimizer='adam')
 model.fit_generator(train_generator, steps_per_epoch=math.ceil(len(train_samples)/128), validation_data=validation_generator, validation_steps=math.ceil(len(validation_samples)/128), epochs=5)
-
-"""
-If the above code throw exceptions, try 
-model.fit_generator(train_generator, steps_per_epoch= len(train_samples),
-validation_data=validation_generator, validation_steps=len(validation_samples), epochs=5, verbose = 1)
-"""
+# Saving the model
 model.save('behavioral_cloning.h5')
