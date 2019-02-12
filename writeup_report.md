@@ -30,6 +30,7 @@ I used the sample driving data from given link as (https://d17h27t6h515a5.cloudf
 [![Normal Center Camera Image](./examples/center_sample.jpg)](./examples/center_sample.jpg)
 
 **Normal Center Cropped Image:**
+
 [![Normal Center Camera Image](./examples/center_cropped-2.jpg)](./examples/center_center_cropped-2.jpg)
 
 <!-- [image6]: ./examples/center_flipped.jpg "Flipped Center Camera Image" -->
