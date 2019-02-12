@@ -17,9 +17,10 @@ I used the sample driving data from given link as (https://d17h27t6h515a5.cloudf
 
 [//]: # (Image References)
 
-[image1]: ./examples/left_sample.jpg "Normal Left Camera Image"
-[image2]: ./examples/right_sample.jpg "Normal Right Camera Image"
-[image3]: ./examples/center_sample.jpg "Normal Center Camera Image"
+[![Normal Left Camera Image](./examples/left_sample.jpg)](./examples/left_sample.jpg)
+[![Normal Right Camera Image](./examples/right_sample.jpg)](./examples/right_sample.jpg)
+[![Normal Center Camera Image](./examples/center_sample.jpg)](./examples/center_sample.jpg)
+
 <!-- [image6]: ./examples/center_flipped.jpg "Flipped Center Camera Image" -->
 
 ## Rubric Points
