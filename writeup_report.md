@@ -61,7 +61,7 @@ The model.py file contains the code for training and saving the convolution neur
 
 I took the model from nvidia paper. My model consists of a convolution neural network 5x5 and  3 X 3 filter sizes and depths between 24 and 64 (model.py lines 89-114). There is 3 fully connected layers are used and of size 100, 50 and 10. The last layer is Dense of size 1 that is giving output for steering.
 
-[![nvidia paper snapshot](./examples/Screenshot 2019-02-12 at 11.02.47 PM.png)](./examples/Screenshot 2019-02-12 at 11.02.47 PM.png)
+[![nvidia paper snapshot](./examples/nvidia_paper_snapshot.png)](./examples/nvidia_paper_snapshot.png)
 
 The model includes ELU layers to introduce nonlinearity(eg. line 98, 100, 102 etc.), and the data is normalized in the model using a Keras lambda layer (code line 92). 
 
