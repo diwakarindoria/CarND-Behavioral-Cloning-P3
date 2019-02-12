@@ -59,23 +59,25 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network 5x5 filter sizes and depths between 24 and 64 (model.py lines 89-114) 
+I took the model from nvidia paper. My model consists of a convolution neural network 5x5 and  3 X 3 filter sizes and depths between 24 and 64 (model.py lines 89-114). There is 3 fully connected layers are used and of size 100, 50 and 10. The last layer is Dense of size 1 that is giving output for steering.
+
+[nvidia paper snapshot]: ./examples/Screenshot 2019-02-12 at 11.02.47 PM.png "nvidia paper snapshot"
 
 The model includes ELU layers to introduce nonlinearity(eg. line 98, 100, 102 etc.), and the data is normalized in the model using a Keras lambda layer (code line 92). 
 
 #### 2. Attempts to reduce overfitting in the model
 
-The model contains dropout (parameter used kernel_regularizer=regularizers.l2(0.0001) in fully connected layer) in order to reduce overfitting (model.py lines 108, 110 and 112). 
+To reduce overfitting, L2 regularizer is used (kernel_regularizer=regularizers.l2(0.0001) in fully connected layer of the architure  (model.py lines 108, 110 and 112).
 
-The model was trained and validated on different data sets (sample data) to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+Data was split into training and validation sets to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, 5 APOCHS. Adam optimizer set the learning rate automatically to get best results. So the learning rate was not tuned manually (model.py line 116, 117). On 3 to 5 APOCHS, it shows some improvement to learn but if APOCHS increases, there is no positie effect on learning. So it is tuned to best on 5. 
+The model used an adam optimizer, 5 EPOCHS. Adam optimizer set the learning rate automatically to get best results. So the learning rate was not tuned manually (model.py line 116, 117). On 3 to 5 EPOCHS, it shows some improvement to learn but if EPOCHS increases, there is no positie effect on learning. So it is tuned to best on 5. Batch size is used of 128.
 
 #### 4. Appropriate training data
 
-Training data was chosen to keep the vehicle driving on the road. The sample data was not sufficient to train the model perfectly, so I used a combination of center lane driving, by center, left and right camera images.
+I used udacity provided sample data to train the model. Training data was chosen to keep the vehicle driving on the road. Centre, left and right camera images were used for training the model. The training data was also augmented by flipping the images.
 
 For details about how I created the training data, see the next section. 
 
@@ -89,9 +91,9 @@ My first step was to use a convolution neural network model similar to the nvidi
 
 In order to gauge how well the model was working, first I run my model with center image and angle only. It was not satisfactory. After that I took left and right images and correct the angle with correction value (0.2). Still, the result on simulator was not satisfactory. I changed the correction values to 0.1 and 0.3 and see the results. The car once goes out of the road and run in the clockwise circle and anti-clockwise on change the correction value of angles but not in the right direction.
 
-I thought, there is no sufficient data to train the model, so I flip all (center, left and right) images and change their angles negatively as well. Now I have double data with existing data. I used croped images with this to optimise the results.
+I thought, there is no sufficient data to train the model, so I flip all (center, left and right) images and change their angles negatively as well. Now I have double data as compare to existing data. I used croped images with this to optimise the results.
 
-To combat the overfitting, I modified the model and the the L2 kernel regularizer (kernel_regularizer=regularizers.l2(0.0001)).
+To combat the overfitting, I modified the model and added the L2 kernel regularizer (kernel_regularizer=regularizers.l2(0.0001)) in the fully connected layer of the model.
 
 Then I found that my model is trained good enough. At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
