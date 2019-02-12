@@ -129,28 +129,27 @@ Final model architecture:
 
 #### 3. Training Set Data & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+I used udacity provided data to train model about good driving behavior. Here is an example image of center lane driving:
 
-![alt text][image2]
+![center camera image][image2]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+The right camera sample image:
 
 ![alt text][image3]
+
+The left camera sample image:
+
 ![alt text][image4]
-![alt text][image5]
-
-Then I repeated this process on track two in order to get more data points.
-
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
-
-![alt text][image6]
-![alt text][image7]
-
-Etc ....
-
-After the collection process, I had X number of data points. I then preprocessed this data by ...
 
 
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
+To augment the data set, I also flipped images and angles thinking that this would add more examples to train the model well as more data is better to train model better. For example, here is an image that has then been flipped:
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+![center flipped][image6]
+![left flipped][image7]
+![right flipped][image7]
+
+After the collection process, I had 3 times more number of data points. I then preprocessed incoming data, centered around zero with small standard deviation (x/127.5 - 1.0) and crop image to only see section with road. Images was cropped 50px from top and 20px from bottom. 
+
+I finally get the batch data using the generator function and get randomly shuffled data set and put Y% of the data into a validation set.
+
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 5 as I used 3 to 7 and found that 5 is good to use. Till the size of epochs is 5, the training shows good results but after that it stops improving. I used an adam optimizer so that manually training the learning rate wasn't necessary.
