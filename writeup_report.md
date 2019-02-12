@@ -17,18 +17,10 @@ I used the sample driving data from given link as (https://d17h27t6h515a5.cloudf
 
 [//]: # (Image References)
 
-[image1]: ./examples/left.jpg "Normal Left Camera Image"
-[image2]: ./examples/right.jpg "Normal Right Camera Image"
-[image3]: ./examples/center.jpg "Normal Center Camera Image"
-[image4]: ./examples/left_flipped.jpg "Flipped Left Camera Image"
-[image5]: ./examples/right_flipped.jpg "Flipped Right Camera Image"
-[image6]: ./examples/center_flipped.jpg "Flipped Center Camera Image"
-[image7]: ./examples/left_cropped.jpg "Cropped Normal Left Camera Image"
-[image8]: ./examples/right_cropped.jpg "Cropped Normal Right Camera Image"
-[image9]: ./examples/center_cropped.jpg "Cropped Normal Center Camera Image"
-[image10]: ./examples/left_flipped_cropped.jpg "Cropped Flipped Left Camera Image"
-[image11]: ./examples/right_flipped_cropped.jpg "Cropped Flipped Right Camera Image"
-[image12]: ./examples/center_flipped_cropped.jpg "Cropped Flipped Center Camera Image"
+[image1]: ./examples/left_sample.jpg "Normal Left Camera Image"
+[image2]: ./examples/right_sample.jpg "Normal Right Camera Image"
+[image3]: ./examples/center_sample.jpg "Normal Center Camera Image"
+<!-- [image6]: ./examples/center_flipped.jpg "Flipped Center Camera Image" -->
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.
@@ -148,8 +140,8 @@ To augment the data set, I also flipped images and angles thinking that this wou
 ![left flipped][image7]
 ![right flipped][image7]
 
-After the collection process, I had 3 times more number of data points. I then preprocessed incoming data, centered around zero with small standard deviation (x/127.5 - 1.0) and crop image to only see section with road. Images was cropped 50px from top and 20px from bottom. 
+After the collection process, I had 3 times more number of data points. I then preprocessed incoming data by normalize and cropping the image, centered around zero with small standard deviation (x/127.5 - 1.0) and crop image to only see section with road. Images was cropped 50px from top and 20px from bottom. All the preprocessing was done in the start model itself.
 
-I finally get the batch data using the generator function and get randomly shuffled data set and put Y% of the data into a validation set.
+I get randomly shuffled data set and put 20% of the data into a validation set(model.py line 29). I used the python generator that provide the batches of data for training and validation of the model. (model.py lines 32, 82)
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 5 as I used 3 to 7 and found that 5 is good to use. Till the size of epochs is 5, the training shows good results but after that it stops improving. I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 5 as I used 3 to 7 and found that 5 is good to use. Till the size of epochs is 5, the training and validation shows good results but after that it stops improving. I used an adam optimizer so that manually training the learning rate wasn't necessary.
